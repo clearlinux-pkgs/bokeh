@@ -1,2 +1,10 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/lib/python3.6/site-packages/tests/__init__.py
+/usr/lib/python3.6/site-packages/tests/__pycache__/__init__.cpython-36.pyc
+/usr/lib/python2.7/site-packages/tests/__init__.py
+/usr/lib/python3.6/site-packages/tests/conftest.py
+/usr/lib/python2.7/site-packages/tests/conftest.pyc
+/usr/lib/python2.7/site-packages/tests/conftest.py
+/usr/lib/python2.7/site-packages/tests/__init__.pyc
+/usr/lib/python3.6/site-packages/tests/__pycache__/conftest.cpython-36.pyc

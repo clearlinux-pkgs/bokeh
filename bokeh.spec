@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.12.5
-Release  : 2
+Release  : 3
 URL      : http://pypi.debian.net/bokeh/bokeh-0.12.5.tar.gz
 Source0  : http://pypi.debian.net/bokeh/bokeh-0.12.5.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -53,12 +53,12 @@ python components for the bokeh package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1492291322
+export SOURCE_DATE_EPOCH=1492292301
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1492291322
+export SOURCE_DATE_EPOCH=1492292301
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -75,5 +75,13 @@ echo ----[ mark ]----
 
 %files python
 %defattr(-,root,root,-)
+%exclude /usr/lib/python2.7/site-packages/tests/__init__.py
+%exclude /usr/lib/python2.7/site-packages/tests/__init__.pyc
+%exclude /usr/lib/python2.7/site-packages/tests/conftest.py
+%exclude /usr/lib/python2.7/site-packages/tests/conftest.pyc
+%exclude /usr/lib/python3.6/site-packages/tests/__init__.py
+%exclude /usr/lib/python3.6/site-packages/tests/__pycache__/__init__.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/tests/__pycache__/conftest.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/tests/conftest.py
 /usr/lib/python2*/*
 /usr/lib/python3*/*
