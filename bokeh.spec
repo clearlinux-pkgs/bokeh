@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.12.6
-Release  : 5
+Release  : 6
 URL      : http://pypi.debian.net/bokeh/bokeh-0.12.6.tar.gz
 Source0  : http://pypi.debian.net/bokeh/bokeh-0.12.6.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -14,11 +14,13 @@ Requires: bokeh-bin
 Requires: bokeh-python
 Requires: Jinja2
 Requires: PyYAML
+Requires: bkcharts
 Requires: numpy
 Requires: python-dateutil
 Requires: requests
 Requires: six
 Requires: tornado
+BuildRequires : bkcharts
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
@@ -53,12 +55,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497383389
+export SOURCE_DATE_EPOCH=1497455324
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1497383389
+export SOURCE_DATE_EPOCH=1497455324
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
