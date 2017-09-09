@@ -4,13 +4,14 @@
 #
 Name     : bokeh
 Version  : 0.12.7
-Release  : 7
+Release  : 8
 URL      : http://pypi.debian.net/bokeh/bokeh-0.12.7.tar.gz
 Source0  : http://pypi.debian.net/bokeh/bokeh-0.12.7.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: bokeh-bin
+Requires: bokeh-legacypython
 Requires: bokeh-python
 Requires: Jinja2
 Requires: PyYAML
@@ -38,9 +39,18 @@ Group: Binaries
 bin components for the bokeh package.
 
 
+%package legacypython
+Summary: legacypython components for the bokeh package.
+Group: Default
+
+%description legacypython
+legacypython components for the bokeh package.
+
+
 %package python
 Summary: python components for the bokeh package.
 Group: Default
+Requires: bokeh-legacypython
 
 %description python
 python components for the bokeh package.
@@ -54,12 +64,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1504016932
+export SOURCE_DATE_EPOCH=1504998564
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1504016932
+export SOURCE_DATE_EPOCH=1504998564
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -74,7 +84,10 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 /usr/bin/bokeh
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
