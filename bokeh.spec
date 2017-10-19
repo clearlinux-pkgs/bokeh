@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.12.9
-Release  : 10
+Release  : 11
 URL      : http://pypi.debian.net/bokeh/bokeh-0.12.9.tar.gz
 Source0  : http://pypi.debian.net/bokeh/bokeh-0.12.9.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
