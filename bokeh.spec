@@ -4,14 +4,13 @@
 #
 Name     : bokeh
 Version  : 0.12.15
-Release  : 17
+Release  : 18
 URL      : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Source0  : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: bokeh-bin
-Requires: bokeh-legacypython
 Requires: bokeh-python3
 Requires: bokeh-python
 Requires: Jinja2
@@ -44,15 +43,6 @@ Group: Binaries
 bin components for the bokeh package.
 
 
-%package legacypython
-Summary: legacypython components for the bokeh package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the bokeh package.
-
-
 %package python
 Summary: python components for the bokeh package.
 Group: Default
@@ -79,15 +69,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522348110
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523286487
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1522348110
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -98,10 +85,6 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/bokeh
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
