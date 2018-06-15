@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.12.15
-Release  : 22
+Release  : 23
 URL      : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Source0  : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
