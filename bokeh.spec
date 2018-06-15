@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.12.15
-Release  : 23
+Release  : 24
 URL      : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Source0  : https://pypi.python.org/packages/ad/67/82f17df7d1f4b9e81c9263c1a1dc3897c43cf5a9461872f9054517331f77/bokeh-0.12.15.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: bokeh-bin
 Requires: bokeh-python3
+Requires: bokeh-license
 Requires: bokeh-python
 Requires: Jinja2
 Requires: PyYAML
@@ -24,7 +25,6 @@ Requires: tornado
 BuildRequires : bkcharts
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : setuptools-python
@@ -37,9 +37,18 @@ Bokeh
 %package bin
 Summary: bin components for the bokeh package.
 Group: Binaries
+Requires: bokeh-license
 
 %description bin
 bin components for the bokeh package.
+
+
+%package license
+Summary: license components for the bokeh package.
+Group: Default
+
+%description license
+license components for the bokeh package.
 
 
 %package python
@@ -68,11 +77,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523556489
+export SOURCE_DATE_EPOCH=1529093472
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/bokeh
+cp LICENSE.txt %{buildroot}/usr/share/doc/bokeh/LICENSE.txt
+cp bokeh/LICENSE.txt %{buildroot}/usr/share/doc/bokeh/bokeh_LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -84,6 +96,11 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/bokeh
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/bokeh/LICENSE.txt
+/usr/share/doc/bokeh/bokeh_LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
