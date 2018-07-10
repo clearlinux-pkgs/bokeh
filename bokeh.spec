@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 0.13.0
-Release  : 30
+Release  : 31
 URL      : https://files.pythonhosted.org/packages/07/1b/1bb751797f0bbbafc2642c629656ce158e7e7b7fb1110f449f7c320fb819/bokeh-0.13.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/07/1b/1bb751797f0bbbafc2642c629656ce158e7e7b7fb1110f449f7c320fb819/bokeh-0.13.0.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
