@@ -4,13 +4,14 @@
 #
 Name     : bokeh
 Version  : 1.4.0
-Release  : 43
+Release  : 44
 URL      : https://files.pythonhosted.org/packages/de/70/fdd4b186d8570a737372487cc5547aac885a1270626e3ebf03db1808e4ed/bokeh-1.4.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/de/70/fdd4b186d8570a737372487cc5547aac885a1270626e3ebf03db1808e4ed/bokeh-1.4.0.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: bokeh-bin = %{version}-%{release}
+Requires: bokeh-license = %{version}-%{release}
 Requires: bokeh-python = %{version}-%{release}
 Requires: bokeh-python3 = %{version}-%{release}
 Requires: Jinja2
@@ -36,18 +37,25 @@ BuildRequires : tornado
 BuildRequires : util-linux
 
 %description
-# Bokeh WebGL examples
-This directory contains examples that demonstrate the various glyphs that have
-support for WebGL rendering. Most of these examples have a testing purpose, e.g.
-to compare the appearance of the WebGL glyph with its regular appearance, or to
-test another aspect of WebGL (e.g. blending of transparent glyphs).
+<a href="https://bokeh.org">
+<img src="https://static.bokeh.org/logos/logotype.svg" height="60" width="150" alt="Bokeh logotype" />
+</a>
 
 %package bin
 Summary: bin components for the bokeh package.
 Group: Binaries
+Requires: bokeh-license = %{version}-%{release}
 
 %description bin
 bin components for the bokeh package.
+
+
+%package license
+Summary: license components for the bokeh package.
+Group: Default
+
+%description license
+license components for the bokeh package.
 
 
 %package python
@@ -70,14 +78,14 @@ python3 components for the bokeh package.
 
 %prep
 %setup -q -n bokeh-1.4.0
+cd %{_builddir}/bokeh-1.4.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572876113
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576088553
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -92,19 +100,13 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/bokeh
+cp %{_builddir}/bokeh-1.4.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/bokeh/3456cec61a5abc0bcd0b886825167ba86d9ae793
+cp %{_builddir}/bokeh-1.4.0/bokeh/LICENSE.txt %{buildroot}/usr/share/package-licenses/bokeh/3456cec61a5abc0bcd0b886825167ba86d9ae793
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
-## Remove excluded files
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/tests/__init__.py
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/tests/__pycache__/__init__.cpython-36.pyc
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/tests/__init__.py
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/tests/conftest.py
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/tests/conftest.pyc
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/tests/conftest.py
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/tests/__init__.pyc
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/tests/__pycache__/conftest.cpython-36.pyc
 
 %files
 %defattr(-,root,root,-)
@@ -112,6 +114,10 @@ rm -f %{buildroot}/usr/lib/python3.7/site-packages/tests/__pycache__/conftest.cp
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/bokeh
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/bokeh/3456cec61a5abc0bcd0b886825167ba86d9ae793
 
 %files python
 %defattr(-,root,root,-)
