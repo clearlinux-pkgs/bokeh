@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 1.4.0
-Release  : 45
+Release  : 46
 URL      : https://files.pythonhosted.org/packages/de/70/fdd4b186d8570a737372487cc5547aac885a1270626e3ebf03db1808e4ed/bokeh-1.4.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/de/70/fdd4b186d8570a737372487cc5547aac885a1270626e3ebf03db1808e4ed/bokeh-1.4.0.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -37,9 +37,11 @@ BuildRequires : tornado
 BuildRequires : util-linux
 
 %description
-<a href="https://bokeh.org">
-<img src="https://static.bokeh.org/logos/logotype.svg" height="60" width="150" alt="Bokeh logotype" />
-</a>
+# Bokeh WebGL examples
+This directory contains examples that demonstrate the various glyphs that have
+support for WebGL rendering. Most of these examples have a testing purpose, e.g.
+to compare the appearance of the WebGL glyph with its regular appearance, or to
+test another aspect of WebGL (e.g. blending of transparent glyphs).
 
 %package bin
 Summary: bin components for the bokeh package.
@@ -71,6 +73,7 @@ python components for the bokeh package.
 Summary: python3 components for the bokeh package.
 Group: Default
 Requires: python3-core
+Provides: pypi(bokeh)
 
 %description python3
 python3 components for the bokeh package.
@@ -85,7 +88,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576088553
+export SOURCE_DATE_EPOCH=1582851359
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
