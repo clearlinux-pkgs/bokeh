@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 2.0.1
-Release  : 48
+Release  : 50
 URL      : https://files.pythonhosted.org/packages/45/83/20bd995c4d79f8947fb2c9b80fa729157300d252a63c412d0f5a4915ff07/bokeh-2.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/45/83/20bd995c4d79f8947fb2c9b80fa729157300d252a63c412d0f5a4915ff07/bokeh-2.0.1.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -17,7 +17,6 @@ Requires: bokeh-python3 = %{version}-%{release}
 Requires: Jinja2
 Requires: Pillow
 Requires: PyYAML
-Requires: bkcharts
 Requires: numpy
 Requires: packaging
 Requires: python-dateutil
@@ -26,7 +25,6 @@ Requires: typing_extensions
 BuildRequires : Jinja2
 BuildRequires : Pillow
 BuildRequires : PyYAML
-BuildRequires : bkcharts
 BuildRequires : buildreq-distutils3
 BuildRequires : numpy
 BuildRequires : packaging
@@ -70,14 +68,14 @@ Summary: python3 components for the bokeh package.
 Group: Default
 Requires: python3-core
 Provides: pypi(bokeh)
-Requires: pypi(python_dateutil)
+Requires: pypi(jinja2)
 Requires: pypi(numpy)
 Requires: pypi(packaging)
-Requires: pypi(jinja2)
 Requires: pypi(pillow)
+Requires: pypi(python_dateutil)
 Requires: pypi(pyyaml)
-Requires: pypi(typing_extensions)
 Requires: pypi(tornado)
+Requires: pypi(typing_extensions)
 
 %description python3
 python3 components for the bokeh package.
@@ -92,8 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585672905
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1585852503
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
