@@ -1,5 +1,5 @@
 PKG_NAME := bokeh
-URL = https://files.pythonhosted.org/packages/6b/f4/cdd47dfb09ff1433bab0b870d21432a5455265e897993251f1e386bf970c/bokeh-2.2.2.tar.gz
+URL = https://files.pythonhosted.org/packages/88/20/f67d851da06f0f9358ae4e62296e76fefafaa1a5991f1c69496a83ee09ab/bokeh-2.2.3.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
