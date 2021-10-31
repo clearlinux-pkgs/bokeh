@@ -4,7 +4,7 @@
 #
 Name     : bokeh
 Version  : 2.4.1
-Release  : 77
+Release  : 78
 URL      : https://files.pythonhosted.org/packages/30/7b/a837d8f162c7e98262b501b49e6be4608df028cdc5ae81ef6a2e50c104d4/bokeh-2.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/30/7b/a837d8f162c7e98262b501b49e6be4608df028cdc5ae81ef6a2e50c104d4/bokeh-2.4.1.tar.gz
 Summary  : Interactive plots and applications in the browser from Python
@@ -87,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634219367
+export SOURCE_DATE_EPOCH=1635707676
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
